@@ -1,0 +1,41 @@
+
+========================================================================
+                    Source Code Tree Topology
+
+Author: jielong.lin
+Email:  jielong.lin@qq.com
+
+platform: mini2440
+project:  sample4project
+version:  v0.0
+------------------------------------------------------------------------
+
+qemu
+├── products
+│   ├── builds
+│   │   ├── common
+│   │   │   ├── repository
+│   │   │   └── toolschain
+│   │   ├── mini2440
+│   │   │   ├── linux_v3.18   ---------------> (compiled script)
+│   │   │   ├── linux_v2.6                   |
+│   │   │   ├── qemu_v0.10.50                |
+│   │   │   ├── sample4project_v0.0          |
+│   │   │   └── uboot_v1.1.5                 |
+│   │   └── readme4build                     |
+│   └── mini2440                             |
+│       ├── for_linux                        |
+│       │   └── v201712101626 <--- (output)  |
+│       └── for_windows          |           |
+├── readme                 ______|           |
+└── repository            /                  |
+    └── mini2440         /                   |
+        ├── linux       /                    |
+        │   ├── v3.18   <--------------------v (source code)
+        │   └── v2.6
+        ├── qemu
+        │   └── v0.10.50
+        └── uboot
+            └── v1.1.5
+
+

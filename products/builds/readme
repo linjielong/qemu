@@ -1,0 +1,94 @@
+
+
+Compiling Steps:
+    cd mini2440/sample4project_v0.0
+    ./compiler.sh
+
+
+Add a new project, such as linux_v3.18 with naming "PROJECT_VERSION" format
+    cd mini2440   # enter platform
+    cp -rvf sample4project_v0.0 linux_v3.18 # copy a project as new project
+    cd linux_v3.18 # enter new project
+    vim compiler.sh #Customized your requirement
+
+Suggestion:
+    linux_v3.18 ==> repository/mini2440/linux/v3.18
+
+qemu
+├── products
+│   ├── builds
+│   │   ├── common
+│   │   │   ├── repository
+│   │   │   └── toolschain
+│   │   ├── mini2440
+│   │   │   ├── linux_v3.18   ---------------> (compiled script)
+│   │   │   ├── linux_v2.6                   |
+│   │   │   ├── qemu_v0.10.50                |
+│   │   │   ├── sample4project_v0.0          |
+│   │   │   └── uboot_v1.1.5                 |
+│   │   └── readme4build                     |
+│   └── mini2440                             |
+│       ├── for_linux                        |
+│       │   └── v201712101626 <--- (output)  |
+│       └── for_windows          |           |
+├── readme                 ______|           |
+└── repository            /                  |
+    └── mini2440         /                   |
+        ├── linux       /                    |
+        │   ├── v3.18   <--------------------v (source code)
+        │   └── v2.6
+        ├── qemu
+        │   └── v0.10.50
+        └── uboot
+            └── v1.1.5
+
+
+
+
+
+# For Example: sample4project_v0.0
+#
+# (1) common/repository/_FriendlyARM_toolschain_4.4.3_.sh
+#       It is called by mini2440/sample4project_v0.0/compiler.sh
+#       Generate toolschain/FriendlyARM 
+#       Generate mini2440/sample4project_v0.0/.env4toolschain.sh 
+#
+# (2) common/repository/FriendlyARM_toolschain_4.4.3.tgz
+#       It is a toolschain package
+#
+# (3) mini2440/sample4project_v0.0/compiler.sh
+#       It is used for compiling source code by toolschain
+#       It is also used for building toolschain if toolschain is missed
+#
+# (4) mini2440/sample4project_v0.0/.env4toolschain.sh
+#       Set the toolschain environmental variable PATH
+#
+
+qemu/products/builds
+├── common
+│   ├── repository
+│   │   ├── _FriendlyARM_toolschain_4.4.3_.sh
+│   │   └── FriendlyARM_toolschain_4.4.3.tgz
+│   └── toolschain
+│       └── FriendlyARM
+│            └── toolschain
+│                └── 4.4.3
+│                    ├── arm-none-linux-gnueabi
+│                    ├── bin
+│                    ├── include
+│                    ├── lib
+│                    ├── libexec
+│                    └── share
+├── mini2440
+│   ├── linux_v2.6
+│   │   └── compiler.sh
+│   ├── qemu_v0.10.50
+│   │   └── compiler.sh
+│   ├── sample4project_v0.0
+│   │   ├── .env4toolschain.sh
+│   │   └── compiler.sh
+│   └── uboot_v1.1.5
+│       └── compiler.sh
+└── readme
+
+
